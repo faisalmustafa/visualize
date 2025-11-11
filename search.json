@@ -1,0 +1,86 @@
+[
+  {
+    "objectID": "wordcloud.html",
+    "href": "wordcloud.html",
+    "title": "About",
+    "section": "",
+    "text": "WordCloud can be used to show the trend in the data. For this purpose, let’s use the data that from Nguyen et al. (2026).\n\ndf_wordcloud &lt;- read.csv(\"https://faisalmustafa.github.io/visualizingdata/data/nguyen2026.csv\")\n\n\nhead(df_wordcloud)\n\n                              Term\n1            Culturally responsive\n2 Culturally responsive sustaining\n3         Intercultural competence\n4         sociocultural competence\n5                  Multicuturalism\n6            Culturally responsive\n\n\nNext, let’s create a frequency table based on the data, and remove record containing Not Applicable.\n\nlibrary(dplyr)\ntb &lt;- as.data.frame(table(df_wordcloud$Term)) %&gt;% \n  filter(Var1 != \"Not Applicable\")\n\n\nhead(tb)\n\n                                   Var1 Freq\n1          Both Relevent and responsive    1\n2                         Critical race    5\n3                   Cultural competence   20\n4                    Cultural interface    1\n5 Culturally and linguistically diverse    1\n6                    Culturally diverse   14\n\n\nNow we are ready to create a Word Cloud based on the data. In this instance, let’s use wordcloud package.\n\nlibrary(wordcloud)\n\n\nwordcloud(words = tb$Var1 , freq = tb$Freq, scale=c(2,0.2), min.freq = 1,\n          max.words=100, random.order=FALSE, rot.per=0.35,\n          colors= RColorBrewer::brewer.pal(8, \"Dark2\"))\n\n\n\n\n\n\n\n\nTo save the image into a file (e.g., PNG) and adjust its size and resolution, enclose the above code with png(...) and dev.off() as shown below:\n\npng(filename=\"wordcloud.png\", width=30, height=30, units=\"cm\", res = 600)\n\nwordcloud(words = tb$Var1 , freq = tb$Freq, scale=c(2,0.2), min.freq = 1,\n          max.words=100, random.order=FALSE, rot.per=0.35,\n          colors= RColorBrewer::brewer.pal(8, \"Dark2\"))\n\ndev.off()",
+    "crumbs": [
+      "Home",
+      "Wordcloud"
+    ]
+  },
+  {
+    "objectID": "wordcloud.html#wordcoud",
+    "href": "wordcloud.html#wordcoud",
+    "title": "About",
+    "section": "",
+    "text": "WordCloud can be used to show the trend in the data. For this purpose, let’s use the data that from Nguyen et al. (2026).\n\ndf_wordcloud &lt;- read.csv(\"https://faisalmustafa.github.io/visualizingdata/data/nguyen2026.csv\")\n\n\nhead(df_wordcloud)\n\n                              Term\n1            Culturally responsive\n2 Culturally responsive sustaining\n3         Intercultural competence\n4         sociocultural competence\n5                  Multicuturalism\n6            Culturally responsive\n\n\nNext, let’s create a frequency table based on the data, and remove record containing Not Applicable.\n\nlibrary(dplyr)\ntb &lt;- as.data.frame(table(df_wordcloud$Term)) %&gt;% \n  filter(Var1 != \"Not Applicable\")\n\n\nhead(tb)\n\n                                   Var1 Freq\n1          Both Relevent and responsive    1\n2                         Critical race    5\n3                   Cultural competence   20\n4                    Cultural interface    1\n5 Culturally and linguistically diverse    1\n6                    Culturally diverse   14\n\n\nNow we are ready to create a Word Cloud based on the data. In this instance, let’s use wordcloud package.\n\nlibrary(wordcloud)\n\n\nwordcloud(words = tb$Var1 , freq = tb$Freq, scale=c(2,0.2), min.freq = 1,\n          max.words=100, random.order=FALSE, rot.per=0.35,\n          colors= RColorBrewer::brewer.pal(8, \"Dark2\"))\n\n\n\n\n\n\n\n\nTo save the image into a file (e.g., PNG) and adjust its size and resolution, enclose the above code with png(...) and dev.off() as shown below:\n\npng(filename=\"wordcloud.png\", width=30, height=30, units=\"cm\", res = 600)\n\nwordcloud(words = tb$Var1 , freq = tb$Freq, scale=c(2,0.2), min.freq = 1,\n          max.words=100, random.order=FALSE, rot.per=0.35,\n          colors= RColorBrewer::brewer.pal(8, \"Dark2\"))\n\ndev.off()",
+    "crumbs": [
+      "Home",
+      "Wordcloud"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Introduction",
+    "section": "",
+    "text": "This book was inspired by my own exploration of data visualization, which was often appreciated by my team leaders and members when working in my team project. The need to present data which can be understood intuitively but at the same time save space always challenges me to create plots and graphs in my head and do trials and errors searching on Github and Stackoverflow. Creating a chart using this strategy involves hours of learning and tens of trials. Therefore, I do not want to waste what I have learnt. I hope this book gives others inspiration on visualizing data for their own projects. The plots or charts included in this book are maybe unique and rarely used. Standard data visualization can be found in such books as Data Visualization in R, Data Analysis in R, or R for Researchers.\n\n\nIn order that you can use this books and use eyecathing plots and graphs in this book, you will need to have some basic to intermediate skills in using R. Wait! Don’t go away just yet! I started learning R seven years after I completed my Master’s degree, and I enjoyed every process of it, and I know you will too. You don’t have to be a statistic person to learn R, and I wrote this book by keeping that in mind. To learn R, please read Dai’s online book hosted at https://bookdown.org/yundai09/rbootcamp-2025/. You can also consider watching some over 20 minute tutorial videos on YouTube if you are more of a visual-type person.\n\n\n\nFor beginner of R, when something does not work or when an error message appears, you might be frustated. However, there are some places where you can seek for some helps. First, it is best to search on Google. If you have an error message, you can copy a short portion of this message and paste it on Google. Do not trust AI generated answer on Google unless you know what you are doing. If you need further help, you can create an account and ask questions in some knowledge sharing platforms such as Stackoverflow and CrossValidated. If your questions are also related to statistics with R, you can search in sthda at https://www.sthda.com. If you still have more question specifically for the codes in this book, send me an email. My details are publicly available at my university website.\n\n\n\nThis book consists to two chapter chapters, one for quantitative data visualization and the other for qualitative counterpart. Each chapter is divided into several sections, which consist of one topic to make it easier to find the type of charts or plots you are looking for. I try to use the data from my own project, publicly available dataset, or dummy data to create the chart. If the codes provided do not directly produce the chart, I still attach the resulting chart manually. Finally, I provide a sample of paper which uses the corresponding data visualization whenever it is available.\n\n\n\nThe book is written in present tense form because it is an ongoing project until I can no longer maintain it. I will keep updating and adding more charts or plots along the way. The idea can come from my self article writing or my colleagues or students, or from you. Therefore, if you have any ideas to consider, kindly drop me an email.",
+    "crumbs": [
+      "Home",
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#prerequisites",
+    "href": "index.html#prerequisites",
+    "title": "Introduction",
+    "section": "",
+    "text": "In order that you can use this books and use eyecathing plots and graphs in this book, you will need to have some basic to intermediate skills in using R. Wait! Don’t go away just yet! I started learning R seven years after I completed my Master’s degree, and I enjoyed every process of it, and I know you will too. You don’t have to be a statistic person to learn R, and I wrote this book by keeping that in mind. To learn R, please read Dai’s online book hosted at https://bookdown.org/yundai09/rbootcamp-2025/. You can also consider watching some over 20 minute tutorial videos on YouTube if you are more of a visual-type person.",
+    "crumbs": [
+      "Home",
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#if-you-need-help",
+    "href": "index.html#if-you-need-help",
+    "title": "Introduction",
+    "section": "",
+    "text": "For beginner of R, when something does not work or when an error message appears, you might be frustated. However, there are some places where you can seek for some helps. First, it is best to search on Google. If you have an error message, you can copy a short portion of this message and paste it on Google. Do not trust AI generated answer on Google unless you know what you are doing. If you need further help, you can create an account and ask questions in some knowledge sharing platforms such as Stackoverflow and CrossValidated. If your questions are also related to statistics with R, you can search in sthda at https://www.sthda.com. If you still have more question specifically for the codes in this book, send me an email. My details are publicly available at my university website.",
+    "crumbs": [
+      "Home",
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#the-presentation-of-this-book",
+    "href": "index.html#the-presentation-of-this-book",
+    "title": "Introduction",
+    "section": "",
+    "text": "This book consists to two chapter chapters, one for quantitative data visualization and the other for qualitative counterpart. Each chapter is divided into several sections, which consist of one topic to make it easier to find the type of charts or plots you are looking for. I try to use the data from my own project, publicly available dataset, or dummy data to create the chart. If the codes provided do not directly produce the chart, I still attach the resulting chart manually. Finally, I provide a sample of paper which uses the corresponding data visualization whenever it is available.",
+    "crumbs": [
+      "Home",
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#the-updates-and-revisions",
+    "href": "index.html#the-updates-and-revisions",
+    "title": "Introduction",
+    "section": "",
+    "text": "The book is written in present tense form because it is an ongoing project until I can no longer maintain it. I will keep updating and adding more charts or plots along the way. The idea can come from my self article writing or my colleagues or students, or from you. Therefore, if you have any ideas to consider, kindly drop me an email.",
+    "crumbs": [
+      "Home",
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "bipartite.html",
+    "href": "bipartite.html",
+    "title": "Linking Demographic Informatic with a Bipartite Chart",
+    "section": "",
+    "text": "Bipartite Chart that we will use here is an interactive chart which can show how one categorical variable links to categorical variable. It is intended more for presentation, not publication, but it can be used for publication is the figure chart makes sense to readers.\nLet’s load the data which shows how terms are used in different countries. The data is based on my own project.\n\ndf_bipartite &lt;- read.csv(\"https://faisalmustafa.github.io/data_visualization/data/nguyen2026b.csv\")\nhead(df_bipartite)\n\n  Country                    Term  n\n1     USA   Culturally responsive 65\n2     USA     Culturally relevant 20\n3     USA Multicultural education 15\n4     USA     Cultural competence 13\n5     USA      Culturally diverse  8\n6 Germany   Culturally responsive  4\n\n\nThe package used to create this bipartite chart is called bipartiteD3. Before creating the chart, we need to sort the Country and Term in case we want to present the data in order of the frequency.\n\nlibrary(dplyr)\n\nSortPrim &lt;- df_bipartite %&gt;%  # sorting for primary variable, in this case **Country**\n  group_by(Country) %&gt;%\n  summarise(Total=sum(n))%&gt;%\n  arrange(desc(Total))\n\nSortSec &lt;- df_bipartite %&gt;%  # sorting for secondary variable, in this case **Term**\n  group_by(Term) %&gt;%\n  summarise(Total=sum(n))%&gt;%\n  arrange(desc(Total))\n\nFurthermore, we need to manually create color for each value. We can use the ready color palette but I like to use the color that I prefer.\n\nManualColors &lt;- c(USA = '#E1712B', Turkey = '#16FD22', `South Africa` = '#0D16FF', Australia = '#37BC7D', `South Korea` = '#F700DD', Belgium = '#00D1FE', \n                  Germany = '#ECE600', UK = '#FE9200', Austria = '#1C762A', Finland = '#980049', France = '#6D2E8B', Indonesia = '#0DFBD8', Israel = '#6E4500', \n                  Malaysia = '#42707E', Norway = '#C62AFC', Norwegia = '#FE8FDB', Taiwan = '#FE0D91', Philippines = '#859AFE', Brazil = '#A7F47F', \n                  Canada = '#FEC77D', Chile = '#FF6365', China = '#D5C4FB', Ecuador = '#C2EAC7', Georgia = '#FF9898', Iceland = '#8B8B00', Isarel = '#915375', \n                  Italy = '#DD8CFF', Japan = '#ABE8F6', Kenya = '#16FEA0', Mexico = '#0D5695', Morocco = '#D40095', Nepal = '#7F8266', `New Zealand` = '#AB0DA1', \n                  Oman = '#7E38CA', Pakistan = '#AA4016', Samoa = '#00A08D', `Czech Rep.` = '#E7E5A0', UAE = '#FF6C9D' )\n\nNow we are ready to generate the chart using the following code. We will use the package bipartiteD3 to achieve our purpose.\n\nlibrary(bipartiteD3)\n\n\nlibrary(bipartiteD3)\nbipartite_D3(df_bipartite, colouroption = 'manual', \n             NamedColourVector = ManualColors, \n             ColourBy = 1,\n             PercentageDecimals=1, \n             PrimaryLab = 'Country',\n             SecondaryLab = 'Term',\n             SiteNames = '',\n             SortPrimary = SortPrim$Country,\n             SortSecondary = SortSec$Term,\n             MainFigSize = c(1000, 1500), \n             IndivFigSize = c(200, 1000),\n             BoxLabPos = c(20, 20),\n             PercPos = c(110,330),\n             BarSize = 20,\n             MinWidth = 10,\n             Pad=5,\n             filename = 'small1976Plot')\n\n\n\n\nbipartite image"
+  }
+]
